@@ -1,4 +1,4 @@
-#important bib
+#importation des bibliothèques nécessaires
 import sqlite3
 import os
 import sys
@@ -8,8 +8,11 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-#path for signin ui file
-pathSignIn = loadUiType(os.path.join(os.path.dirname(__file__), "sign.ui"))
+#chemin du fichier qui contient l'interface sign in
+pathSignIn, _ = loadUiType(os.path.join(os.path.dirname(__file__), "sign.ui"))
+#connexion à la base de données
+connexion = sqlite3.connect("client.db")
+c = connexion.cursor()
 
 #class SignIn
 class SignIn(QMainWindow, pathSignIn):
@@ -18,6 +21,9 @@ class SignIn(QMainWindow, pathSignIn):
         QMainWindow.__init__(self)
         self.setupUi(self)
         QMainWindow.setFixedSize(self, 447,600)
+
+    def create_db(self):
+
 
 #main method
 def main():
