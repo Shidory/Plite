@@ -28,6 +28,9 @@ class SignIn(QMainWindow, pathSignIn):
         """Code permettant de créer une table et ses champs"""
         c.execute("CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT, email TEXT, pwd TEXT )")
 
+    def insertion(self):
+        pass
+
 #main method
 def main():
     app = QApplication(sys.argv)
