@@ -1,3 +1,4 @@
+"""Les interfaces et le code sont assez basiques, à vous de les améliorer à votre guise"""
 #importation des bibliothèques nécessaires
 import sqlite3
 import os
@@ -10,6 +11,9 @@ from PyQt5.QtGui import *
 
 #chemin du fichier qui contient l'interface sign in
 pathSignIn, _ = loadUiType(os.path.join(os.path.dirname(__file__), "sign.ui"))
+#chemin du fichier qui contient l'interface login
+pathLogin, _ = loadUiType(os.path.join(os.path.dirname(__file__), "login.ui"))
+
 #connexion à la base de données
 connexion = sqlite3.connect("client.db")
 c = connexion.cursor()
