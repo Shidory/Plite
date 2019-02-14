@@ -47,6 +47,12 @@ class SignIn(QMainWindow, pathSignIn):
         c.close()
         connexion.close()
 
+class Login(QMainWindow , pathLogin):
+    def __init__(self, parent=None):
+        super(Login, self).__init__(parent)
+        QMainWindow.__init__(self)
+        self.setupUi(self)
+
 #main method
 def main():
     app = QApplication(sys.argv)
