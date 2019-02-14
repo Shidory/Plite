@@ -23,13 +23,25 @@ class SignIn(QMainWindow, pathSignIn):
         QMainWindow.setFixedSize(self, 447,600)
         #execution de la méthode create_table
         self.create_table()
+        self.btn_sign_in.clicked.connect(self.insertion)
+        surname = self.window().let_surname.text()
+        print(self.let_surname.text())
 
     def create_table(self):
-        """Code permettant de créer une table et ses champs"""
+        """Code permettant de créer une table et ses champs avec leur type"""
         c.execute("CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT, email TEXT, pwd TEXT )")
 
     def insertion(self):
-        pass
+        #recupération des valeurs se trouvant dans les lineEdit
+        surname = self.let_surname.text()
+        name = self.let_name.text()
+        email = self.let_mail.text()
+        pwd = self.let_pwd.text()
+        #insertion des valeurs des lineEdit dans la table user de la BDD client
+        c.execute("INSERT INTO user VALUES(?,?,?,?)", (surname, name, email, pwd))
+        connexion.commit()
+        c.close()
+        connexion.close()
 
 #main method
 def main():
