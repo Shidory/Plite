@@ -21,9 +21,12 @@ class SignIn(QMainWindow, pathSignIn):
         QMainWindow.__init__(self)
         self.setupUi(self)
         QMainWindow.setFixedSize(self, 447,600)
+        #execution de la méthode create_table
+        self.create_table()
 
-    def create_db(self):
-
+    def create_table(self):
+        """Code permettant de créer une table et ses champs"""
+        c.execute("CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT, email TEXT, pwd TEXT )")
 
 #main method
 def main():
