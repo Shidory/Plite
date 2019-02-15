@@ -13,6 +13,8 @@ from PyQt5.QtGui import *
 pathSignIn, _ = loadUiType(os.path.join(os.path.dirname(__file__), "sign.ui"))
 #chemin du fichier qui contient l'interface login
 pathLogin, _ = loadUiType(os.path.join(os.path.dirname(__file__), "login.ui"))
+#chemin du fichier qui contient l'interface home
+pathHome = loadUiType(os.paht.join(os.path.dirname(__file__), "home.ui"))
 
 #connexion à la base de données
 connexion = sqlite3.connect("client.db")
@@ -64,6 +66,12 @@ class Login(QMainWindow , pathLogin):
         #Recupère le surname et le password de l'utilisateur dans la BDD si ceux-ci correspondent
         c.execute("SELECT surname, pwd FROM user WHERE surname=surname AND pwd=pwd")
         data = c.fetchone()
+
+        if surname == data[0] and pwd == data[1]:
+            print("C'est bon")
+        else:
+            print("Incohérence")
+
 
 
 #main method
