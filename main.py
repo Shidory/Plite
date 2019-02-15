@@ -55,8 +55,10 @@ class Login(QMainWindow , pathLogin):
         super(Login, self).__init__(parent)
         QMainWindow.__init__(self)
         self.setupUi(self)
+        self.setFixedSize(447, 600)
+        self.btn_login.clicked.connect(self.check_login)
 
-    def click_btn_login(self):
+    def check_login(self):
         pass
 
 
