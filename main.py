@@ -70,6 +70,7 @@ class Login(QMainWindow , pathLogin):
         for row in data:
             if surname == row[0] and pwd == row[1]:
                 self.home = Home(self)
+                self.hide()
                 self.home.show()
 
             else:
