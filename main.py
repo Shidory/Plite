@@ -59,7 +59,11 @@ class Login(QMainWindow , pathLogin):
         self.btn_login.clicked.connect(self.check_login)
 
     def check_login(self):
-        pass
+        surname = self.let_surname.text()
+        pwd = self.let_pwd.text()
+        #Recupère le surname et le password de l'utilisateur dans la BDD si ceux-ci correspondent
+        c.execute("SELECT surname, pwd FROM user WHERE surname=surname AND pwd=pwd")
+        data = c.fetchone()
 
 
 #main method
