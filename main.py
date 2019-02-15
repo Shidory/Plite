@@ -72,6 +72,9 @@ class Login(QMainWindow , pathLogin):
         else:
             print("Incohérence")
 
+class Home(QMainWindow, pathHome):
+    def __init__(self, parent=None):
+        super(Home, self).__init__(parent)
 
 
 #main method
