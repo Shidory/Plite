@@ -14,7 +14,7 @@ pathSignIn, _ = loadUiType(os.path.join(os.path.dirname(__file__), "sign.ui"))
 #chemin du fichier qui contient l'interface login
 pathLogin, _ = loadUiType(os.path.join(os.path.dirname(__file__), "login.ui"))
 #chemin du fichier qui contient l'interface home
-pathHome = loadUiType(os.paht.join(os.path.dirname(__file__), "home.ui"))
+pathHome, _ = loadUiType(os.path.join(os.path.dirname(__file__), "home.ui"))
 
 #connexion à la base de données
 connexion = sqlite3.connect("client.db")
@@ -46,11 +46,11 @@ class SignIn(QMainWindow, pathSignIn):
         #insertion des valeurs des lineEdit dans la table user de la BDD client
         c.execute("INSERT INTO user VALUES(?,?,?,?)", (surname, name, email, pwd))
         connexion.commit()
-        c.close()
-        connexion.close()
-        #login = Login(self)
-        #self.hide()
-        #login.show()
+        self.login = Login(self)
+        self.hide()
+        self.login.show()
+        #c.close()
+        #connexion.close()
 
 class Login(QMainWindow , pathLogin):
     def __init__(self, parent=None):
@@ -65,22 +65,28 @@ class Login(QMainWindow , pathLogin):
         pwd = self.let_pwd.text()
         #Recupère le surname et le password de l'utilisateur dans la BDD si ceux-ci correspondent
         c.execute("SELECT surname, pwd FROM user WHERE surname=surname AND pwd=pwd")
-        data = c.fetchone()
+        data = c.fetchall()
 
-        if surname == data[0] and pwd == data[1]:
-            print("C'est bon")
-        else:
-            print("Incohérence")
+        for row in data:
+            if surname == row[0] and pwd == row[1]:
+                self.home = Home(self)
+                self.home.show()
+
+            else:
+                print("incohérence")
 
 class Home(QMainWindow, pathHome):
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
+        QMainWindow.__init__(self)
+        self.setupUi(self)
+        self.setFixedSize(447, 600)
 
 
 #main method
 def main():
     app = QApplication(sys.argv)
-    window = Login()
+    window = SignIn()
     window.show()
     app.exec()
 
