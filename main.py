@@ -1,4 +1,5 @@
-"""Les interfaces et le code sont assez basiques, à vous de les améliorer comme bon vous semble"""
+"""Les interfaces et le code sont assez basiques,
+à vous de les améliorer comme bon vous semble"""
 ############################################
 # Importation des bibliothèques nécessaires#
 ############################################
@@ -48,24 +49,26 @@ class SignIn(QMainWindow, pathSignIn):
 
     def create_table(self):
         """Code permettant de créer une table et ses champs avec leur type"""
-        request = "CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT, email TEXT, pwd TEXT )"
+        request = "CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT," \
+                  " email TEXT, pwd TEXT )"
         cursor.execute(request)
 
     def insertion(self):
-        #recupération des valeurs se trouvant dans les lineEdit
+        """Récupération des valeurs se trouvant dans les lineEdit"""
         surname = self.let_surname.text()
         name = self.let_name.text()
         email = self.let_mail.text()
         pwd = self.let_pwd.text()
-        #insertion des valeurs des lineEdit dans la table user de la BDD client
-        c.execute("INSERT INTO user VALUES(?,?,?,?)", (surname, name, email, pwd))
-        connexion.commit()
+        """Insertion des valeurs des lineEdit dans la table user de la BDD client"""
+        request = "INSERT INTO user VALUES(?,?,?,?)"
+        cursor.execute(request, (surname, name, email, pwd))
+        connection.commit()
         self.login = Login(self)
         self.hide()
         self.login.show()
-        #c.close()
-        #connexion.close()
-
+##########################################
+# Class Login                            #
+##########################################
 class Login(QMainWindow , pathLogin):
     def __init__(self, parent=None):
         super(Login, self).__init__(parent)
@@ -78,11 +81,13 @@ class Login(QMainWindow , pathLogin):
     def check_login(self):
         surname = self.let_surname.text()
         pwd = self.let_pwd.text()
-        #Recupère le surname et le password de l'utilisateur dans la BDD si ceux-ci correspondent
-        c.execute("SELECT surname, pwd FROM user WHERE surname=surname AND pwd=pwd")
-        data = c.fetchall()
+        """Recupère le surname et le password de l'utilisateur dans la BDD 
+        si ceux-ci correspondent"""
+        request = "SELECT surname, pwd FROM user WHERE surname=surname AND pwd=pwd"
+        cursor.execute(request)
+        result = cursor.fetchall()
 
-        for row in data:
+        for row in result:
             if surname == row[0] and pwd == row[1]:
                 self.home = Home(self)
                 self.hide()
