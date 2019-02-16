@@ -37,6 +37,7 @@ class SignIn(QMainWindow, pathSignIn):
     def show_login(self):
         login = Login(self)
         self.hide()
+        login.show()
 
     def create_table(self):
         """Code permettant de créer une table et ses champs avec leur type"""
