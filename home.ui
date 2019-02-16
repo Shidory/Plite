@@ -14,25 +14,14 @@
    <string>Home</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QTableView" name="tbl_client">
     <property name="geometry">
      <rect>
-      <x>110</x>
-      <y>120</y>
-      <width>221</width>
-      <height>301</height>
+      <x>10</x>
+      <y>20</y>
+      <width>431</width>
+      <height>331</height>
      </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>80</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>OK</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
