@@ -35,9 +35,9 @@ class SignIn(QMainWindow, pathSignIn):
         print(self.let_surname.text())
 
     def show_login(self):
-        login = Login(self)
+        self.login = Login(self)
         self.hide()
-        login.show()
+        self.login.show()
 
     def create_table(self):
         """Code permettant de créer une table et ses champs avec leur type"""
@@ -65,6 +65,7 @@ class Login(QMainWindow , pathLogin):
         self.setupUi(self)
         self.setFixedSize(447, 600)
         self.btn_login.clicked.connect(self.check_login)
+
 
     def check_login(self):
         surname = self.let_surname.text()
