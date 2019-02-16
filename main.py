@@ -30,7 +30,7 @@ class SignIn(QMainWindow, pathSignIn):
         #execution de la méthode create_table
         self.create_table()
         self.btn_sign_in.clicked.connect(self.insertion)
-        #self.btn_login.clicked.connect(self.show_login)
+        self.btn_login.clicked.connect(self.show_login)
         surname = self.window().let_surname.text()
         print(self.let_surname.text())
 
