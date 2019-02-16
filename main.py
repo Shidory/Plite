@@ -83,15 +83,15 @@ class Login(QMainWindow , pathLogin):
             else:
                 self.lbl_wrong.setText('Wrong surname or password')
 
-    def update(self):
-        pass
-
 class Home(QMainWindow, pathHome):
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.setFixedSize(447, 600)
+
+    def update(self):
+        pass
 
 
 #main method
