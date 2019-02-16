@@ -1,5 +1,7 @@
-"""Les interfaces et le code sont assez basiques, à vous de les améliorer à votre guise"""
-#importation des bibliothèques nécessaires
+"""Les interfaces et le code sont assez basiques, à vous de les améliorer comme bon vous semble"""
+############################################
+# Importation des bibliothèques nécessaires#
+############################################
 import sqlite3
 import os
 import sys
@@ -9,25 +11,30 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
-#chemin du fichier qui contient l'interface sign in
+############################################
+# Chemin vers les différents UI            #
+############################################
 pathSignIn, _ = loadUiType(os.path.join(os.path.dirname(__file__), "sign.ui"))
-#chemin du fichier qui contient l'interface login
+
 pathLogin, _ = loadUiType(os.path.join(os.path.dirname(__file__), "login.ui"))
-#chemin du fichier qui contient l'interface home
+
 pathHome, _ = loadUiType(os.path.join(os.path.dirname(__file__), "home.ui"))
 
-#connexion à la base de données
-connexion = sqlite3.connect("client.db")
-c = connexion.cursor()
+###########################################
+# Connexion à la BDD                      #
+###########################################
+connection = sqlite3.connect("client.db")
+cursor = connection.cursor()
 
-#class SignIn
+###########################################
+#class SignIn                             #
+###########################################
 class SignIn(QMainWindow, pathSignIn):
     def __init__(self, parent=None):
         super(SignIn, self).__init__(parent)
         QMainWindow.__init__(self)
         self.setupUi(self)
         QMainWindow.setFixedSize(self, 447,600)
-        #execution de la méthode create_table
         self.create_table()
         self.btn_sign_in.clicked.connect(self.insertion)
         self.btn_login.clicked.connect(self.show_login)
@@ -41,7 +48,8 @@ class SignIn(QMainWindow, pathSignIn):
 
     def create_table(self):
         """Code permettant de créer une table et ses champs avec leur type"""
-        c.execute("CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT, email TEXT, pwd TEXT )")
+        request = "CREATE TABLE IF NOT EXISTS user(surname TEXT, name TEXT, email TEXT, pwd TEXT )"
+        cursor.execute(request)
 
     def insertion(self):
         #recupération des valeurs se trouvant dans les lineEdit
@@ -96,7 +104,8 @@ class Home(QMainWindow, pathHome):
         #data = c.fetchall()
         #self.tbl_client.setItem(data)
         for row, data in enumerate(c.fetchall()):
-            pass
+            for column, dataa in enumerate(data):
+                self.tbl_client.setItem(row, column)
 
 #main method
 def main():
