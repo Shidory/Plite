@@ -33,7 +33,7 @@
       <x>80</x>
       <y>150</y>
       <width>281</width>
-      <height>25</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="placeholderText">
@@ -44,9 +44,9 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>240</y>
+      <y>224</y>
       <width>281</width>
-      <height>25</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="placeholderText">

@@ -65,7 +65,7 @@ class Login(QMainWindow , pathLogin):
         self.setupUi(self)
         self.setFixedSize(447, 600)
         self.btn_login.clicked.connect(self.check_login)
-
+        self.lbl_wrong.setText('')
 
     def check_login(self):
         surname = self.let_surname.text()
@@ -81,7 +81,10 @@ class Login(QMainWindow , pathLogin):
                 self.home.show()
 
             else:
-                print("incohérence")
+                self.lbl_wrong.setText('Wrong surname or password')
+
+    def update(self):
+        pass
 
 class Home(QMainWindow, pathHome):
     def __init__(self, parent=None):
