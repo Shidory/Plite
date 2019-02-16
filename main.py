@@ -90,9 +90,8 @@ class Home(QMainWindow, pathHome):
         self.setupUi(self)
         self.setFixedSize(447, 600)
 
-    def update(self):
+    def update_table(self):
         pass
-
 
 #main method
 def main():
