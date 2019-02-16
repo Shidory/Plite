@@ -30,8 +30,12 @@ class SignIn(QMainWindow, pathSignIn):
         #execution de la méthode create_table
         self.create_table()
         self.btn_sign_in.clicked.connect(self.insertion)
+        #self.btn_login.clicked.connect(self.show_login)
         surname = self.window().let_surname.text()
         print(self.let_surname.text())
+
+    def show_login(self):
+        login = Login(self)
 
     def create_table(self):
         """Code permettant de créer une table et ses champs avec leur type"""
