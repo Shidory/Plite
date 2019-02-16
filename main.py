@@ -96,23 +96,29 @@ class Login(QMainWindow , pathLogin):
             else:
                 self.lbl_wrong.setText('Wrong surname or password')
 
+#########################################
+# Class Home                            #
+#########################################
 class Home(QMainWindow, pathHome):
     def __init__(self, parent=None):
         super(Home, self).__init__(parent)
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.setFixedSize(447, 600)
-        self.btn_update.clicked.connect(self.update_table)
+        request = "SELECT * FROM user"
+        result = cursor.execute(request)
+        self.tbl_client.setRowCount(0)
+        for row_number, row_data in enumerate(result):
+            self.tbl_client.insertRow(row_number)
+            for column_number, data in enumerate(row_data):
+                self.tbl_client.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
-    def update_table(self):
-        c.execute("SELECT * FROM user")
-        #data = c.fetchall()
-        #self.tbl_client.setItem(data)
-        for row, data in enumerate(c.fetchall()):
-            for column, dataa in enumerate(data):
-                self.tbl_client.setItem(row, column)
+    def update_client(self):
+        pass
 
-#main method
+#########################################
+# Méthode main                          #
+#########################################
 def main():
     app = QApplication(sys.argv)
     window = SignIn()
