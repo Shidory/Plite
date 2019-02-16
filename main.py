@@ -89,6 +89,7 @@ class Home(QMainWindow, pathHome):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.setFixedSize(447, 600)
+        self.btn_update.clicked.connect(self.update_table)
 
     def update_table(self):
         pass
