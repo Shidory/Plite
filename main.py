@@ -92,7 +92,11 @@ class Home(QMainWindow, pathHome):
         self.btn_update.clicked.connect(self.update_table)
 
     def update_table(self):
-        pass
+        c.execute("SELECT * FROM user")
+        #data = c.fetchall()
+        #self.tbl_client.setItem(data)
+        for row, data in enumerate(c.fetchall()):
+            pass
 
 #main method
 def main():
