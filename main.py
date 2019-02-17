@@ -120,6 +120,8 @@ class Home(QMainWindow, pathHome):
         d'id, n'empêche que vous vous puissiez le faire."""
         surname = self.let_surname.text()
         request = "UPDATE user SET surname=surname WHERE surname=surname"
+        cursor.execute(request)
+        connection.commit()
 
     def delete_client(self):
         surname = self.let_surname.text()
