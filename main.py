@@ -115,12 +115,13 @@ class Home(QMainWindow, pathHome):
                 self.tbl_client.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def update_client(self):
-        pass
+        surname = self.let_surname.text()
 
     def delete_client(self):
         surname = self.let_surname.text()
         request = "DELETE FROM user WHERE surname=surname"
         cursor.execute(request)
+        connection.commit()
 
 #########################################
 # Méthode main                          #
