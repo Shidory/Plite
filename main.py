@@ -116,6 +116,9 @@ class Home(QMainWindow, pathHome):
     def update_client(self):
         pass
 
+    def delete_client(self):
+        pass
+
 #########################################
 # Méthode main                          #
 #########################################
