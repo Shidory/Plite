@@ -117,7 +117,7 @@ class Home(QMainWindow, pathHome):
         pass
 
     def delete_client(self):
-        pass
+        request = "DELETE FROM user WHERE surname=surname"
 
 #########################################
 # Méthode main                          #
