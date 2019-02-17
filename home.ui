@@ -40,21 +40,11 @@
      <string>Delete</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tbl_client">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>431</width>
-      <height>401</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="let_surname">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>530</y>
+      <x>110</x>
+      <y>390</y>
       <width>231</width>
       <height>31</height>
      </rect>
@@ -62,6 +52,36 @@
     <property name="placeholderText">
      <string>Surname</string>
     </property>
+   </widget>
+   <widget class="QTableWidget" name="tbl_client">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>11</y>
+      <width>421</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="rowCount">
+     <number>10</number>
+    </property>
+    <property name="columnCount">
+     <number>4</number>
+    </property>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <row/>
+    <column/>
+    <column/>
+    <column/>
+    <column/>
    </widget>
   </widget>
  </widget>

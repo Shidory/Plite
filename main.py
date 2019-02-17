@@ -116,21 +116,18 @@ class Home(QMainWindow, pathHome):
                 self.tbl_client.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def update_client(self):
-        """Je n'update que le nom, selon le nom saisi, à vous de taper la requête que
+        """Je n'update que le surname, en prédéfinissant le surname à Chidori, à vous de taper la requête que
         vous voulez selon le résultat que vous attendez. Aussi je n'ai pas utilisé
         d'id, n'empêche que vous puissiez le faire."""
         surname = self.let_surname.text()
-        request = "SELECT * FROM user WHERE surname=surname"
-        cursor.execute(request)
-        request = "UPDATE user SET surname='Chidori' WHERE surname=surname"
-        cursor.execute(request)
+        request = "UPDATE user SET surname=? WHERE surname=?"
+        cursor.execute(request, ('Chidori', surname))
         connection.commit()
-        print("connexion etablie")
 
     def delete_client(self):
 
         surname = self.let_surname.text()
-        request = "DELETE FROM user WHERE surname=surname"
+        request = "DELETE name FROM user WHERE surname=surname"
         cursor.execute(request)
         connection.commit()
 
