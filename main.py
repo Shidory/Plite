@@ -115,7 +115,11 @@ class Home(QMainWindow, pathHome):
                 self.tbl_client.setItem(row_number, column_number, QtWidgets.QTableWidgetItem(str(data)))
 
     def update_client(self):
+        """Je n'update que le nom, selon le nom saisi, à vous de taper la requête que
+        vous voulez selon le résultat que vous attendez. Aussi je n'ai pas utilisé
+        d'id, n'empêche que vous vous puissiez le faire."""
         surname = self.let_surname.text()
+        request = "UPDATE user SET surname=surname WHERE surname=surname"
 
     def delete_client(self):
         surname = self.let_surname.text()
