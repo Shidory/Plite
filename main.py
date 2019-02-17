@@ -105,6 +105,7 @@ class Home(QMainWindow, pathHome):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.setFixedSize(447, 600)
+        self.btn_delete.clicked.connect(self.delete_client)
         request = "SELECT * FROM user"
         result = cursor.execute(request)
         self.tbl_client.setRowCount(0)
