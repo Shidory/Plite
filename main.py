@@ -105,6 +105,7 @@ class Home(QMainWindow, pathHome):
         QMainWindow.__init__(self)
         self.setupUi(self)
         self.setFixedSize(447, 600)
+        self.btn_update.clicked.connect(self.update_client)
         self.btn_delete.clicked.connect(self.delete_client)
         request = "SELECT * FROM user"
         result = cursor.execute(request)
@@ -117,13 +118,17 @@ class Home(QMainWindow, pathHome):
     def update_client(self):
         """Je n'update que le nom, selon le nom saisi, à vous de taper la requête que
         vous voulez selon le résultat que vous attendez. Aussi je n'ai pas utilisé
-        d'id, n'empêche que vous vous puissiez le faire."""
+        d'id, n'empêche que vous puissiez le faire."""
         surname = self.let_surname.text()
-        request = "UPDATE user SET surname=surname WHERE surname=surname"
+        request = "SELECT * FROM user WHERE surname=surname"
+        cursor.execute(request)
+        request = "UPDATE user SET surname='Chidori' WHERE surname=surname"
         cursor.execute(request)
         connection.commit()
+        print("connexion etablie")
 
     def delete_client(self):
+
         surname = self.let_surname.text()
         request = "DELETE FROM user WHERE surname=surname"
         cursor.execute(request)
