@@ -118,6 +118,7 @@ class Home(QMainWindow, pathHome):
         pass
 
     def delete_client(self):
+        surname = self.let_surname.text()
         request = "DELETE FROM user WHERE surname=surname"
         cursor.execute(request)
 
