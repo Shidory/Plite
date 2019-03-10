@@ -127,7 +127,7 @@ class Home(QMainWindow, pathHome):
     def delete_client(self):
 
         surname = self.let_surname.text()
-        request = "DELETE name FROM user WHERE surname=surname"
+        request = "DELETE FROM user WHERE surname=surname"
         cursor.execute(request)
         connection.commit()
 
